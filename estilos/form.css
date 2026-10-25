@@ -1,0 +1,181 @@
+/* ==================== GERAL ==================== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(to right, #00f7ff, #104c68);
+}
+
+/* ==================== LINHA 1: 3 COLUNAS ==================== */
+.topo {
+    display: flex;
+    flex-wrap: wrap;            /* quebra para baixo em telas pequenas */
+    justify-content: center;
+    align-items: stretch;       /* as 3 colunas ficam com a mesma altura */
+    gap: 30px;
+    padding: 50px 20px;
+}
+
+/* ---------- Coluna 1: sobre a clínica ---------- */
+.describe {
+    width: 300px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(28, 83, 105);
+    color: rgb(214, 212, 212);
+}
+
+/* ---------- Coluna 2: dentistas ---------- */
+.lista-dentistas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;       /* cards acompanham a altura da linha */
+    gap: 20px;
+}
+
+/* ---------- Coluna 3: formulário ---------- */
+.form-Main {
+    width: 350px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background: linear-gradient(to right, #01abb1, #94dfdf);
+    color: #000;
+    border-radius: 10px;
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.campos input[type="text"],
+.campos input[type="email"],
+.campos input[type="tel"],
+.campos select {
+    padding: 8px;
+    border: 1px solid #104c68;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.campos input:hover,
+.campos select:hover {
+    background-color: #e6e6e6;
+    scale: 1.03;
+}
+
+.grupo-radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: #104c68;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1c5369;
+    scale: 1.05;
+}
+
+/* ==================== CARDS DOS DENTISTAS ==================== */
+
+/* 1. Moldura: tamanho e efeito 3D */
+.cartao-dentista {
+    width: 270px;
+    min-height: 520px;          /* altura parecida com a do formulário */
+    perspective: 1000px;
+}
+
+/* 2. Parte que gira */
+.cartao-giratorio {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* 3. Gatilho: mouse em cima gira 180 graus */
+.cartao-dentista:hover .cartao-giratorio {
+    transform: rotateY(180deg);
+}
+
+/* 4. Regras comuns aos dois lados */
+.lado-frente,
+.lado-verso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. Frente */
+.lado-frente {
+    justify-content: flex-end;
+    background: linear-gradient(to right, #01abb1, #94dfdf);
+    color: #104c68;
+    border: 1px solid #104c68;
+}
+
+/* 6. Verso (já começa virado) */
+.lado-verso {
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(to right, #104c68, #1c5369);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.lado-verso ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* 7. Textos */
+.nome-dentista {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+
+.lado-frente p {
+    margin-bottom: 10px;
+}
+
+/* 8. Foto */
+.foto {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.foto-vazia {
+    background: rgba(16, 76, 104, 0.25);
+}
